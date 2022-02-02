@@ -35,3 +35,7 @@ If you have issues unzipping the file on macOS, use the command line tool ditto
 .. code-block:: bash
 
 		ditto -xk <zip file> <target_dir>
+
+.. note::
+
+   Testing a note
