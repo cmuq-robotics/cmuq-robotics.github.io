@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Lab0: Preparation
+nav_order: 1
 ---
 
 # Installation of the ROS environment for robot control and simulation
