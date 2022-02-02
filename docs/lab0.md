@@ -30,8 +30,9 @@ you have at least 20GB of available disk space on your computer to run the virtu
 Download the zipped folder [Ubuntu_18_04_ROS.zip (~6.18 GB)](https://drive.google.com/file/d/1aDhigSu-y4BNaHdC2mVcUiJMYaZkWzaM/view?usp=sharing) from Google Drive and extract it. If you
 extract the zipped folder in an Ubuntu distribution, make sure that you use `p7zip`, that you can install with:
 
-.. code-block:: bash
+``` bash
    sudo apt-get install p7zip-full
+```
 
 If you have issues unzipping the file on macOS, use the command line tool ditto
 
