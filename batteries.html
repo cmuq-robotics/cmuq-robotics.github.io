@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>16-311 Introduction to Robotics - Spring 2022 &mdash; cmuq-robotics.github.io  documentation</title>
+  <title>Recharging the Robot Batteries &mdash; cmuq-robotics.github.io  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Logistics" href="logistics.html" /> 
+    <link rel="next" title="Lab 0: Installation of the ROS environment for robot control and simulation" href="lab0.html" />
+    <link rel="prev" title="Logistics" href="logistics.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -26,7 +27,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="#" class="icon icon-home"> cmuq-robotics.github.io
+            <a href="index.html" class="icon icon-home"> cmuq-robotics.github.io
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -36,9 +37,12 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="logistics.html">Logistics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="batteries.html">Recharging the Robot Batteries</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Recharging the Robot Batteries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lipo-battery-guide-adapted-from-trossen">LiPo Battery Guide (adapted from <span>[trossen]</span>)</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="lab0.html">Lab 0: Installation of the ROS environment for robot control and simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1: Moving the TurtleBot3</a></li>
 </ul>
@@ -49,17 +53,17 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">cmuq-robotics.github.io</a>
+          <a href="index.html">cmuq-robotics.github.io</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>16-311 Introduction to Robotics - Spring 2022</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Recharging the Robot Batteries</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/batteries.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -67,28 +71,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="introduction-to-robotics-spring-2022">
-<h1>16-311 Introduction to Robotics - Spring 2022<a class="headerlink" href="#introduction-to-robotics-spring-2022" title="Permalink to this headline"></a></h1>
-<p>This site describes the hardware and software setup for the programming labs and homework of the course.</p>
-<div class="toctree-wrapper compound">
-</div>
-</section>
-<section id="news">
-<h1>News<a class="headerlink" href="#news" title="Permalink to this headline"></a></h1>
+  <section id="recharging-the-robot-batteries">
+<h1>Recharging the Robot Batteries<a class="headerlink" href="#recharging-the-robot-batteries" title="Permalink to this headline"></a></h1>
+<section id="lipo-battery-guide-adapted-from-trossen">
+<h2>LiPo Battery Guide (adapted from <a class="reference internal" href="#trossen" id="id1"><span>[trossen]</span></a>)<a class="headerlink" href="#lipo-battery-guide-adapted-from-trossen" title="Permalink to this headline"></a></h2>
+<p>Before you use or charge any lithium battery you must read the <a class="reference external" href="http://trossenrobotics.com/shared/productdocs/lipoWarningGuide.pdf">Lithium Battery Saftety Instructions and Warnings</a> document.</p>
+<p>Do not charge or use batteries if the battery …</p>
 <ul class="simple">
-<li><p>Jan 9: Welcome!</p></li>
-<li><p>Jan 13: Please read <a class="reference external" href="logistics.html">logistics</a>.</p></li>
-<li><p>Jan 13: <a class="reference external" href="lab0.html">Lab 0</a> is up.</p></li>
-<li><p>Feb 03: <a class="reference external" href="lab1.html">Lab 1</a> is up.</p></li>
-<li><p>Feb 06: Please read <a class="reference external" href="batteries.html">LiPo battery guide</a></p></li>
+<li><p>is punctured or damaged</p></li>
+<li><p>is bloated, expanded, swelling or otherwise deformed</p></li>
+<li><p>has any cell with a voltage of 3.3v. This means less than 9.9v for a 3-cell/11.1v battery.</p></li>
+<li><p><strong>Do not charge batteries unattended</strong>. Monitor batteries during charging for popping, hissing, smoke, sparks or fire. Also monitor the battery for any swelling or other deformities. Disconnect the battery from your charger immediately.</p></li>
+<li><p>Do not charge batteries near flammable material.</p></li>
+<li><p>Do not charge batteries while they are in your robot.</p></li>
 </ul>
+<dl class="citation">
+<dt class="label" id="trossen"><span class="brackets"><a class="fn-backref" href="#id1">trossen</a></span></dt>
+<dd><p><a class="reference external" href="https://learn.trossenrobotics.com/index.php/getting-started-with-the-arbotix/11-lipo-battery-guide">https://learn.trossenrobotics.com/index.php/getting-started-with-the-arbotix/11-lipo-battery-guide</a></p>
+</dd>
+</dl>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="logistics.html" class="btn btn-neutral float-right" title="Logistics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="logistics.html" class="btn btn-neutral float-left" title="Logistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lab0.html" class="btn btn-neutral float-right" title="Lab 0: Installation of the ROS environment for robot control and simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
