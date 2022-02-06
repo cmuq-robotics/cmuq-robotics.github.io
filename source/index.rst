@@ -15,14 +15,18 @@ This site describes the hardware and software setup for the programming labs and
     :hidden:
 
     logistics
+    batteries
     lab0
+    lab1
 
 
 News
 ====
 
-- 09/01/2021: Welcome!
-- 09/01/2021: Please read `logistics <logistics.html>`_.
-- 09/01/2021: `Lab 0 <lab0.html>`_ is up.
+- Jan 9: Welcome!
+- Jan 13: Please read `logistics <logistics.html>`_.
+- Jan 13: `Lab 0 <lab0.html>`_ is up.
+- Feb 03: `Lab 1 <lab1.html>`_ is up.
+- Feb 06: Please read `LiPo battery guide <batteries.html>`_
 
 ..
