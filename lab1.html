@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lab 1: Moving the TurtleBot3 &mdash; cmuq-robotics.github.io  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Lab 1: Moving the TurtleBot3 &mdash; cmuq-robotics.github.io  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -74,12 +71,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="lab-1-moving-the-turtlebot3">
+  <div class="section" id="lab-1-moving-the-turtlebot3">
 <h1>Lab 1: Moving the TurtleBot3<a class="headerlink" href="#lab-1-moving-the-turtlebot3" title="Permalink to this headline"></a></h1>
 <p>In this course, we will use the <a class="reference external" href="https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/">TurtleBot3</a> platform.
 TurtleBot3 is widely used in education, research, hobby, and product prototyping, and it is fully supported by ROS.</p>
 <a class="reference internal image-reference" href="_images/turtlebot3.jpg"><img alt="Alternative text" src="_images/turtlebot3.jpg" style="width: 600px;" /></a>
-<section id="getting-started">
+<div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h2>
 <p>In order to connect your VM to the TurtleBot3, you first need to find out the <em>name</em> of the robot you plan to use.
 Currently, we have 3 TurtleBot3 robots in the lab. Their names are:</p>
@@ -98,8 +95,8 @@ Currently, we have 3 TurtleBot3 robots in the lab. Their names are:</p>
 <a class="reference internal image-reference" href="_images/tbot3_battinplace.jpg"><img alt="Alternative text" src="_images/tbot3_battinplace.jpg" style="width: 600px;" /></a>
 <p>Your robot is ready to go. You should power on the OpenCR using the front switch:</p>
 <a class="reference internal image-reference" href="_images/tbot3_switch.jpg"><img alt="Alternative text" src="_images/tbot3_switch.jpg" style="width: 600px;" /></a>
-</section>
-<section id="connecting-to-the-ros-network-of-the-robot">
+</div>
+<div class="section" id="connecting-to-the-ros-network-of-the-robot">
 <h2>Connecting to the ROS network of the robot<a class="headerlink" href="#connecting-to-the-ros-network-of-the-robot" title="Permalink to this headline"></a></h2>
 <p>Powering the OpenCR will also power the Raspberry Pi 3B+ in the robot. The
 Raspberry Pi runs Ubuntu 18 with ROS Melodic. At boot, a ROS Master will be
@@ -145,8 +142,8 @@ Contact the TA if you cannot see a valid IP address in the VM, and are unsure ab
 address changes, you will need to update the file and re-run the source
 command in each terminal window that you want to use.</p>
 </div>
-</section>
-<section id="testing-the-communication-with-the-ros-network">
+</div>
+<div class="section" id="testing-the-communication-with-the-ros-network">
 <h2>Testing the communication with the ROS network<a class="headerlink" href="#testing-the-communication-with-the-ros-network" title="Permalink to this headline"></a></h2>
 <p>Open a new terminal window and set the environment variables:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
@@ -179,8 +176,8 @@ command in each terminal window that you want to use.</p>
 </pre></div>
 </div>
 <p>Now you are ready to move the robot!</p>
-</section>
-<section id="teleoperate-the-robot-using-the-keyboard">
+</div>
+<div class="section" id="teleoperate-the-robot-using-the-keyboard">
 <h2>Teleoperate the robot using the keyboard<a class="headerlink" href="#teleoperate-the-robot-using-the-keyboard" title="Permalink to this headline"></a></h2>
 <p>To test that everything is fine, we can do a quick test using the <cite>turtlebot3_teleop</cite> package:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
@@ -201,8 +198,8 @@ space key, s : force stop
 CTRL-C to quit
 </pre></div>
 </div>
-</section>
-<section id="visualizing-the-trajectories-in-rviz">
+</div>
+<div class="section" id="visualizing-the-trajectories-in-rviz">
 <h2>Visualizing the trajectories in RViz<a class="headerlink" href="#visualizing-the-trajectories-in-rviz" title="Permalink to this headline"></a></h2>
 <p>While moving the robot, you can use <strong>RViz</strong> to visualize the robot trajectory. In a new terminal, set the environment variables and launch rviz with a predefined configuration for the turtlebot3. But first, we need to run <cite>turtlebot3_remote.launch</cite> to load the 3D model of the robot (otherwise, it won’t show in RViz).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
@@ -233,8 +230,8 @@ rosrun rviz rviz -d <span class="sb">`</span>rospack find turtlebot3_description
 </ul>
 <a class="reference internal image-reference" href="_images/tbot_rviz_showodom.png"><img alt="Alternative text" src="_images/tbot_rviz_showodom.png" style="width: 600px;" /></a>
 <p>Now you can move the robot and visualize its trajectory. You are ready to do the Lab!</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
