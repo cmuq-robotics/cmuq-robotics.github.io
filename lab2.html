@@ -18,8 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lab 1: Moving the TurtleBot3" href="lab2.html" />
-    <link rel="prev" title="Lab 0: Installation of the ROS environment for robot control and simulation" href="lab0.html" /> 
+    <link rel="prev" title="Lab 1: Moving the TurtleBot3" href="lab1.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,6 +40,7 @@
 <li class="toctree-l1"><a class="reference internal" href="logistics.html">Logistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="batteries.html">Recharging the Robot Batteries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab0.html">Lab 0: Installation of the ROS environment for robot control and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1: Moving the TurtleBot3</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Lab 1: Moving the TurtleBot3</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#connecting-to-the-ros-network-of-the-robot">Connecting to the ROS network of the robot</a></li>
@@ -49,7 +49,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#visualizing-the-trajectories-in-rviz">Visualizing the trajectories in RViz</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 1: Moving the TurtleBot3</a></li>
 </ul>
 
         </div>
@@ -68,7 +67,7 @@
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
       <li>Lab 1: Moving the TurtleBot3</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/lab1.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/lab2.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -78,37 +77,35 @@
              
   <section id="lab-1-moving-the-turtlebot3">
 <h1>Lab 1: Moving the TurtleBot3<a class="headerlink" href="#lab-1-moving-the-turtlebot3" title="Permalink to this headline"></a></h1>
-<p>In this course, we will use the <a class="reference external" href="https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/">TurtleBot3</a> platform.
-TurtleBot3 is widely used in education, research, hobby, and product prototyping, and it is fully supported by ROS.</p>
-<a class="reference internal image-reference" href="_images/turtlebot3.jpg"><img alt="Alternative text" src="_images/turtlebot3.jpg" style="width: 600px;" /></a>
+<p>In this course, we will also use the <a class="reference external" href="https://www.turtlebot.com/turtlebot2/">TurtleBot2</a> platform.
+TurtleBot2 is a low-cost, robor kit with open-source software widely used in education, research, hobby, and product prototyping, and it is fully supported by ROS.</p>
+<a class="reference internal image-reference" href="_images/turtlebot2.png"><img alt="Alternative text" src="_images/turtlebot2.png" style="width: 600px;" /></a>
 <section id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h2>
-<p>In order to connect your VM to the TurtleBot3, you first need to find out the <em>name</em> of the robot you plan to use.
-Currently, we have 3 TurtleBot3 robots in the lab. Their names are:</p>
+<p>In order to connect your VM to the TurtleBot2, you first need to find out the <em>name</em> of the robot you plan to use.
+Currently, we have 3 TurtleBot2 robots in the lab. Their names are:</p>
 <ul class="simple">
-<li><p>pearl</p></li>
-<li><p>allen</p></li>
-<li><p>blum</p></li>
+<li><p>minsky</p></li>
+<li><p>knuth</p></li>
+<li><p>karp (not operational for the moment)</p></li>
 </ul>
-<p>Once you have chosen a robot, make sure that the battery is charged and connected.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>See <a class="reference external" href="batteries.html">battery guidelines</a>.</p>
-</div>
-<a class="reference internal image-reference" href="_images/tbot3_batt.jpg"><img alt="Alternative text" src="_images/tbot3_batt.jpg" style="width: 600px;" /></a>
-<p>The battery should be placed in the bottom level of the robot, and the cables should be pushed inside:</p>
-<a class="reference internal image-reference" href="_images/tbot3_battinplace.jpg"><img alt="Alternative text" src="_images/tbot3_battinplace.jpg" style="width: 600px;" /></a>
-<p>Your robot is ready to go. You should power on the OpenCR using the front switch:</p>
-<a class="reference internal image-reference" href="_images/tbot3_switch.jpg"><img alt="Alternative text" src="_images/tbot3_switch.jpg" style="width: 600px;" /></a>
+<p>The names are associated to the laptop that runs the robot software. Once you
+have chosen a laptop and a robot, make sure that the base is connected to the
+laptop. Power on the base first and then boot the laptop by pressing the on/off
+switch. Once it boots, you should see the ubuntu splash screen and see the linux booting.
+After that, you should hear a sound that indicates the robot is ready to go.</p>
+<p>The laptop lid should be closed and the laptop placed in the bottom level of the robot, and the cables should be pushed inside:</p>
+<p>Your robot is ready to go.</p>
 </section>
 <section id="connecting-to-the-ros-network-of-the-robot">
 <h2>Connecting to the ROS network of the robot<a class="headerlink" href="#connecting-to-the-ros-network-of-the-robot" title="Permalink to this headline"></a></h2>
-<p>Powering the OpenCR will also power the Raspberry Pi 3B+ in the robot. The
-Raspberry Pi runs Ubuntu 18 with ROS Melodic. At boot, a ROS Master will be
-started as well as several nodes in charge of the TurtleBot3 core functionality.
-You should connect your VM to the ROS network of the robot in order to control
-the robot as well as reading sensor data: basically, publishing and subscribing
-to topics that are used by the nodes running on the TurtleBot3 Raspberry Pi.</p>
+<blockquote>
+<div><p>At boot, a ROS Master will be started as well as several nodes in charge of the</p>
+</div></blockquote>
+<p>TurtleBot2 core functionality. You should connect your VM to the ROS network of
+the robot in order to control the robot as well as reading sensor data:
+basically, publishing and subscribing to topics that are used by the nodes
+running on the TurtleBot2 laptop.</p>
 <p>To connect to the ROS network of the robot, you should connect to the WiFi network <cite>cs4qatar</cite>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -128,12 +125,10 @@ Contact the TA if you cannot see a valid IP address in the VM, and are unsure ab
 <ul class="simple">
 <li><p>ROS_MASTER_URI: This is required to tell your ROS nodes where they can locate the master (turtlebot).</p></li>
 <li><p>ROS_HOSTNAME: This sets the declared network address of the nodes that you will launch. You should use your IP address in the WiFi network.</p></li>
-<li><p>TURTLEBOT3_MODEL:</p></li>
 </ul>
 <p>You can create a file <cite>connect_robot.sh</cite> in your home directory with the following content:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ROS_MASTER_URI</span><span class="o">=</span><span class="s2">&quot;http://&lt;name of your robot&gt;.qatar.cmu.edu:11311&quot;</span>
 <span class="nb">export</span> <span class="nv">ROS_HOSTNAME</span><span class="o">=</span>&lt;your ip address&gt;
-<span class="nb">export</span> <span class="nv">TURTLEBOT3_MODEL</span><span class="o">=</span>waffle_pi
 </pre></div>
 </div>
 <p>Then, everytime you open a new terminal window, type</p>
@@ -184,8 +179,16 @@ command in each terminal window that you want to use.</p>
 </section>
 <section id="teleoperate-the-robot-using-the-keyboard">
 <h2>Teleoperate the robot using the keyboard<a class="headerlink" href="#teleoperate-the-robot-using-the-keyboard" title="Permalink to this headline"></a></h2>
-<p>To test that everything is fine, we can do a quick test using the <cite>turtlebot3_teleop</cite> package:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+<p>To test that everything is fine, we can do a quick test using the <cite>turtlebot_teleop</cite> package. But first, you need to install these packages:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/catkin_ws/src<span class="p">;</span> git clone https://github.com/turtlebot/turtlebot.git
+</pre></div>
+</div>
+<p>After that, you should build the packages</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/catkin_ws/<span class="p">;</span> catkin make
+</pre></div>
+</div>
+<p>Finally, you can launch the turtlebot teleop key:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch turtlebot_teleop keyboard_teleop.launch
 </pre></div>
 </div>
 <p>If the node is successfully launched, the following instruction will be appeared to the terminal window.</p>
@@ -208,24 +211,12 @@ CTRL-C to quit
 <h2>Visualizing the trajectories in RViz<a class="headerlink" href="#visualizing-the-trajectories-in-rviz" title="Permalink to this headline"></a></h2>
 <p>While moving the robot, you can use <strong>RViz</strong> to visualize the robot trajectory. In a new terminal, set the environment variables and launch rviz with a predefined configuration for the turtlebot3. But first, we need to run <cite>turtlebot3_remote.launch</cite> to load the 3D model of the robot (otherwise, it won’t show in RViz).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
-roslaunch turtlebot3_bringup turtlebot3_remote.launch
+roslaunch turtlebot_rviz_launchers view_robot.launch
 </pre></div>
 </div>
-<p>Open a new terminal and run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
-rosrun rviz rviz -d <span class="sb">`</span>rospack find turtlebot3_description<span class="sb">`</span>/rviz/model.rviz
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The previous command runs rviz using a predefined configuration. What’s the purpose of <cite>rospack find turtlebot3_description</cite> here?</p>
-</div>
-<p>You should now have an RViz window open showing the TurtleBot3 (the real one!).</p>
-<a class="reference internal image-reference" href="_images/tbot3_rviz.png"><img alt="Alternative text" src="_images/tbot3_rviz.png" style="width: 600px;" /></a>
+<p>You should now have an RViz window open showing the TurtleBot2 (the real one!).</p>
 <p>Change the <cite>Fixed Frame</cite> to <cite>odom</cite> in the <cite>Global Options</cite>.</p>
-<a class="reference internal image-reference" href="_images/tbot_rviz_frameodom.png"><img alt="Alternative text" src="_images/tbot_rviz_frameodom.png" style="width: 600px;" /></a>
 <p>Create a visualization for the <cite>/odom</cite> topic by clicking <cite>Add</cite> in the <cite>Displays pane</cite></p>
-<a class="reference internal image-reference" href="_images/tbot_rviz_addodom.png"><img alt="Alternative text" src="_images/tbot_rviz_addodom.png" style="width: 600px;" /></a>
 <p>Tune the visualization parameters to make it nicer. We use:</p>
 <ul class="simple">
 <li><p>Shaft Length: 0.1</p></li>
@@ -233,7 +224,6 @@ rosrun rviz rviz -d <span class="sb">`</span>rospack find turtlebot3_description
 <li><p>Head Length: 0.05</p></li>
 <li><p>Head Radius: 0.02</p></li>
 </ul>
-<a class="reference internal image-reference" href="_images/tbot_rviz_showodom.png"><img alt="Alternative text" src="_images/tbot_rviz_showodom.png" style="width: 600px;" /></a>
 <p>Now you can move the robot and visualize its trajectory. You are ready to do the Lab!</p>
 </section>
 </section>
@@ -242,8 +232,7 @@ rosrun rviz rviz -d <span class="sb">`</span>rospack find turtlebot3_description
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="lab0.html" class="btn btn-neutral float-left" title="Lab 0: Installation of the ROS environment for robot control and simulation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lab2.html" class="btn btn-neutral float-right" title="Lab 1: Moving the TurtleBot3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="lab1.html" class="btn btn-neutral float-left" title="Lab 1: Moving the TurtleBot3" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
