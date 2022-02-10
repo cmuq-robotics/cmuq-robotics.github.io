@@ -31,7 +31,7 @@ Your robot is ready to go.
 Connecting to the ROS network of the robot
 --------------------------------------------------
 
- At boot, a ROS Master will be started as well as several nodes in charge of the
+At boot, a ROS Master will be started as well as several nodes in charge of the
 TurtleBot2 core functionality. You should connect your VM to the ROS network of
 the robot in order to control the robot as well as reading sensor data:
 basically, publishing and subscribing to topics that are used by the nodes

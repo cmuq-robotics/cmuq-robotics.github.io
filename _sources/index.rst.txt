@@ -30,4 +30,3 @@ News
 - Feb 03: `Lab 1 <lab1.html>`_ is up.
 - Feb 06: Please read `LiPo battery guide <batteries.html>`_
 - Feb 10: `Lab 2 <lab2.html>`_ is up.
-..
