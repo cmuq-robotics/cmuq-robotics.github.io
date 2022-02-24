@@ -10,11 +10,13 @@ Getting Started
 Install the `ar_track_alvar` ros package in your VM.
 
 .. code-block:: bash
+
    sudo apt install ros-melodic-ar-track-alvar
 
 Clone the example code into your catkin workspace:
 
 .. code-block:: bash
+
    cd ~/catkin_ws/src
    git clone git@github.com:cmuq-robotics/ar-track-alvar-example.git
 
