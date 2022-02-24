@@ -54,6 +54,7 @@ You can use **RViz** to visualize the markers.
 First we need to run `turtlebot3_remote.launch` to load the 3D model and the description of the robot (otherwise, it won't show in RViz and the TF won't work properly).
 
 In a new terminal, set the environment variables and run:
+
 .. code-block:: bash
 
    source ~/connect_robot.sh

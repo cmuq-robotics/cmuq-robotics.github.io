@@ -110,12 +110,11 @@ git clone https://github.com/EduardoFF/ar-track-alvar-example.git
 <h2>Visualizing the markers in RViz<a class="headerlink" href="#visualizing-the-markers-in-rviz" title="Permalink to this headline"></a></h2>
 <p>You can use <strong>RViz</strong> to visualize the markers.</p>
 <p>First we need to run <cite>turtlebot3_remote.launch</cite> to load the 3D model and the description of the robot (otherwise, it won’t show in RViz and the TF won’t work properly).</p>
-<p>In a new terminal, set the environment variables and run:
-.. code-block:: bash</p>
-<blockquote>
-<div><p>source ~/connect_robot.sh
-roslaunch turtlebot3_bringup turtlebot3_remote.launch</p>
-</div></blockquote>
+<p>In a new terminal, set the environment variables and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
+roslaunch turtlebot3_bringup turtlebot3_remote.launch
+</pre></div>
+</div>
 <p>To launch rviz with a predefined configuration for the turtlebot3, open another terminal and run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
 rosrun rviz rviz -d <span class="sb">`</span>rospack find turtlebot3_description<span class="sb">`</span>/rviz/model.rviz
