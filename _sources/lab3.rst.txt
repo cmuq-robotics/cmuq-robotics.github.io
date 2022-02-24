@@ -18,7 +18,7 @@ Clone the example code into your catkin workspace:
 .. code-block:: bash
 
    cd ~/catkin_ws/src
-   git clone git@github.com:EduardoFF/ar-track-alvar-example.git
+   git clone https://github.com/EduardoFF/ar-track-alvar-example.git
 
 
 Launching the example
