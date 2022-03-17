@@ -20,6 +20,7 @@ This site describes the hardware and software setup for the programming labs and
     lab1
     lab2
     lab3
+    lab4
 
 
 News
