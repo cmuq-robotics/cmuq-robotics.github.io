@@ -19,6 +19,8 @@ This site describes the hardware and software setup for the programming labs and
     lab0
     lab1
     lab2
+    lab3
+    lab4
 
 
 News
@@ -30,4 +32,5 @@ News
 - Feb 03: `Lab 1 <lab1.html>`_ is up.
 - Feb 06: Please read `LiPo battery guide <batteries.html>`_
 - Feb 10: `Lab 2 <lab2.html>`_ is up.
-..
+- Feb 24: `Lab 3 <lab3.html>`_ is up.
+- Mar 17: `Lab 4 <lab4.html>`_ is up.
