@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 4: Localization using AMCL &mdash; cmuq-robotics.github.io  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> cmuq-robotics.github.io
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="logistics.html">Logistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batteries.html">Recharging the Robot Batteries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab0.html">Lab 0: Installation of the ROS environment for robot control and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1: Moving the TurtleBot3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 1: Moving the TurtleBot3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3: ARTag tracking with Alvar</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">cmuq-robotics.github.io</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Lab 4: Localization using AMCL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/lab4.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lab-4-localization-using-amcl">
+<h1>Lab 4: Localization using AMCL<a class="headerlink" href="#lab-4-localization-using-amcl" title="Permalink to this headline"></a></h1>
+<p>In this lab, we will use <cite>amcl</cite> package for localization. The amcl algorithm
+implements Monte Carlo localization for state estimation. In the first part of
+the lab, you will use amcl with a map that has already been built for you. In
+the second part, you will build your own map using the <cite>gmapping</cite> package and
+then use the resulting map for localization.</p>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h2>
+<p>Install the <cite>gmapping</cite> ros package in your VM.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install ros-melodic-gmapping
+</pre></div>
+</div>
+<p>Clone the example code into your catkin workspace:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/catkin_ws/src
+git clone https://github.com/cmuq-robotics/cmuq-turtlebot-remote.git
+</pre></div>
+</div>
+</section>
+<section id="launching-the-example">
+<h2>Launching the example<a class="headerlink" href="#launching-the-example" title="Permalink to this headline"></a></h2>
+<p>Connect to one of the robots and edit the file <cite>connect_robot.sh</cite> with the correct values.</p>
+<p>Open a new terminal window and set the environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
+</pre></div>
+</div>
+<p>Use the tool <cite>rostopic</cite> to see the list of topics currently used in the network and check that you can connect to your robot.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rostopic list
+</pre></div>
+</div>
+<p>Launch the <cite>teleop_key</cite> node to move your robot:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch turtlebot_teleop keyboard_teleop.launch
+</pre></div>
+</div>
+</section>
+<section id="part-i-using-amcl">
+<h2>Part I: Using AMCL<a class="headerlink" href="#part-i-using-amcl" title="Permalink to this headline"></a></h2>
+<p>Open a new terminal window and set the environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
+</pre></div>
+</div>
+<p>Launch the <cite>amcl_demo</cite></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch amcl_demo amcl_demo.launch
+</pre></div>
+</div>
+<p>This launch file will start the amcl node with certain predefined parameters. It
+also loads an existing map and publishes it in the <cite>/map</cite> topic. You can open
+the file <cite>~/catkin_ws/src/cmuq-turtlebot-remote/amcl_demo/amcl_demo.launch</cite> to
+see the configuration.</p>
+<p>The <cite>amcl</cite> node uses the particle positions to compute and publish the transform
+from <cite>map</cite> to <cite>base_link</cite>.</p>
+<p>You can use <strong>RViz</strong> to visualize the progress of <cite>amcl</cite> as well as interact with the node.</p>
+<p>In a new terminal, set the environment variables and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
+rosrun rviz rviz
+</pre></div>
+</div>
+<p>You should now have an RViz window.</p>
+<p>You can add the robot model and the map and change the <cite>Fixed Frame</cite> to <cite>map</cite> in the <cite>Global Options</cite>.</p>
+<p>When working with maps, it is useful to set the type of view to <cite>TopDownOrtho</cite> in the <cite>Views</cite> panel.</p>
+<p>You should be able to see the map. However, the robot is not localized yet.</p>
+<a class="reference internal image-reference" href="_images/amcl_1.png"><img alt="Alternative text" src="_images/amcl_1.png" style="width: 600px;" /></a>
+<p>When amcl_demo loads the map of the environment, the TurtleBot does not know its
+current location on the map. It needs a little help. Locate TurtleBot’s position
+in the map by looking at the rviz visualization and let TurtleBot know this
+location by performing the following steps:</p>
+<ul class="simple">
+<li><p>Click on the 2D Pose Estimate button on the tool toolbar at the top of the main screen.</p></li>
+<li><p>Click the cursor on the location on the map where TurtleBot is located. A large green arrow will appear. Drag the mouse to extend the arrow in the direction TurtleBot is facing.</p></li>
+</ul>
+<p>Make sure that the  <cite>Fixed Frame</cite> is set to <cite>map</cite> in the <cite>Global Options</cite>. Otherwise, it won’t work.</p>
+<a class="reference internal image-reference" href="_images/amcl_2.png"><img alt="Alternative text" src="_images/amcl_2.png" style="width: 600px;" /></a>
+<p>Now you should see the robot appearing in the location that you chose.</p>
+<p>You can also visualize pose covariance and the particles that amcl computes.
+Click on the <cite>Add</cite> button on the <cite>Displays</cite> pane and add the topics <cite>/amcl_pose/PoseWithCovariance</cite> and <cite>/particlecloud</cite>.</p>
+<a class="reference internal image-reference" href="_images/amcl_3.png"><img alt="Alternative text" src="_images/amcl_3.png" style="width: 600px;" /></a>
+<p>Move your robot around and observe the performance of AMCL.</p>
+</section>
+<section id="part-ii-using-gmapping">
+<h2>Part II: Using GMapping<a class="headerlink" href="#part-ii-using-gmapping" title="Permalink to this headline"></a></h2>
+<p>For the second part, you will need to kill all the nodes that you launched in
+part I. Now we will use <cite>gmapping</cite> to build our own map. Gmapping implements a
+laser-based SLAM algorithm. We will study SLAM in the next weeks. For now, let’s learn how to use it.</p>
+<p>Open a new terminal window and set the environment variables:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
+</pre></div>
+</div>
+<p>Launch the <cite>gmapping_demo</cite></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>roslaunch gmapping_demo gmapping.launch
+</pre></div>
+</div>
+<p>In a new terminal, set the environment variables and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
+rosrun rviz rviz
+</pre></div>
+</div>
+<p>You should now have an RViz window.</p>
+<p>You can add the robot model and the map (topic <cite>/map</cite>) and change the <cite>Fixed Frame</cite> to <cite>map</cite> in the <cite>Global Options</cite>.</p>
+<p>While moving your robot, you will observe how the map is being built.</p>
+<a class="reference internal image-reference" href="_images/gmapping_1.png"><img alt="Alternative text" src="_images/gmapping_1.png" style="width: 600px;" /></a>
+<p>When you are done, you can save the map. In a new terminal, set the environment variables and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/connect_robot.sh
+rosrun map_server map_saver -f ~/catkin_ws/src/cmuq-turtlebot-remote/my_map
+</pre></div>
+</div>
+<p>You now have a copy of the map in your catkin workspace.</p>
+<p>Now it’s time to stop gmapping.</p>
+<p>Finally, you should repeat part I but now using our map. Edit the launch file
+<cite>amcl_demo.launch</cite> in the <cite>amcl_demo</cite> package to make it work with the map you
+just saved.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, efeoflus.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
