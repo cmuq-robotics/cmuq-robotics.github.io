@@ -1,4 +1,4 @@
-Lab 1: Moving the TurtleBot3
+Lab 2: Moving the TurtleBot2
 =============================================================================
 
 In this course, we will also use the `TurtleBot2 <https://www.turtlebot.com/turtlebot2/>`_ platform.
