@@ -21,7 +21,7 @@ This site describes the hardware and software setup for the programming labs and
     lab2
     lab3
     lab4
-
+    lab5
 
 News
 ====
@@ -34,3 +34,4 @@ News
 - Feb 10: `Lab 2 <lab2.html>`_ is up.
 - Feb 24: `Lab 3 <lab3.html>`_ is up.
 - Mar 17: `Lab 4 <lab4.html>`_ is up.
+- Mar 24: `Lab 5 <lab5.html>`_ is up.
